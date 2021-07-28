@@ -4,12 +4,12 @@ export const UserContext = React.createContext();
 
 const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState({
-    name: "Kim",
-    loggedIn: false,
+    user: "K",
+    isLogIn: false,
   });
-  const logUserIn = () => setUser({ ...user, loggedIn: true });
+  const logIn = () => setUser({ ...user, isLogIn: true });
   return (
-    <UserContext.Provider value={{ user, logUserIn }}>
+    <UserContext.Provider value={{ user, logIn }}>
       {children}
     </UserContext.Provider>
   );
