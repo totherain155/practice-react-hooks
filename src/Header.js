@@ -5,6 +5,7 @@ import { useUser } from "./Context";
 const Header = () => {
   //useUser()
   const { name, loggedIn } = useUser();
+
   return (
     <header>
       <a href="#">Home</a> Hi, {name}, you are{" "}

@@ -3,6 +3,7 @@ import Header from "./Header";
 import { useFns, UserContext } from "./Context";
 
 const Screen = () => {
+  // useFns
   const { logUserIn } = useFns();
   return (
     <div>
