@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "./Context";
 import { useUser } from "./Context";
 
 const Header = () => {
-  const { name, isLogIn } = useUser();
+  //useUser()
+  const { name, loggedIn } = useUser();
   return (
     <header>
-      <a href="#"> Home </a> Hi, {name} you are{" "}
-      {isLogIn ? "here now!" : "stranger"}
+      <a href="#">Home</a> Hi, {name}, you are{" "}
+      {loggedIn ? "logged in " : "anonymous"}
     </header>
   );
 };
