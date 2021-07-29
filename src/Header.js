@@ -1,11 +1,8 @@
-import React, { useContext } from "react";
-import { UserContext } from "./Context";
+import React from "react";
+import { useUser } from "./Context";
 
 const Header = () => {
-  const {
-    user: { name, isLogIn },
-  } = useContext(UserContext);
-
+  const { name, isLogIn } = useUser();
   return (
     <header>
       <a href="#"> Home </a> Hi, {name} you are{" "}

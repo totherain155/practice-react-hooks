@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
-export const UserContext = React.createContext();
+const UserContext = React.createContext();
 
 const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState({
@@ -9,10 +9,20 @@ const UserContextProvider = ({ children }) => {
   });
   const logIn = () => setUser({ ...user, isLogIn: true });
   return (
-    <UserContext.Provider value={{ user, logIn }}>
+    <UserContext.Provider value={{ user, fn: { logIn } }}>
       {children}
     </UserContext.Provider>
   );
+};
+
+export const useUser = () => {
+  const { user } = useContext(UserContext);
+  return user;
+};
+
+export const useFns = () => {
+  const { fn } = useContext(UserContext);
+  return fn;
 };
 
 export default UserContextProvider;
