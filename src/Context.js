@@ -1,31 +1,31 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, createContext } from "react";
 
-const UserContext = React.createContext();
+const LangContext = createContext();
 
-const UserContextProvider = ({ children }) => {
-  const [user, setUser] = useState({
-    name: "K",
-    loggedIn: false,
-  });
-  const logUserIn = () =>
-    setUser({ ...user /*다른 모든 object를 의미한다.  */, loggedIn: true });
+const Lang = ({ defaultLang, children, translations }) => {
+  const [lang, setLang] = useState(defaultLang);
+  console.log(lang);
+  const hyperTranslate = (text) => {
+    if (lang === defaultLang) {
+      return text;
+    }
+  };
+
   return (
-    <UserContext.Provider value={{ user, fn: { logUserIn } }}>
+    <LangContext.Provider value={{ setLang, t: hyperTranslate }}>
       {children}
-    </UserContext.Provider> // Provider의 모든 children은 user에 대한 접근 권한이 생겼다.
-  ); // Provider는 context를 모든 elements랑 공유할 수 있게 만들어 준다.
+    </LangContext.Provider>
+  );
 };
 
-// useUser
-export const useUser = () => {
-  const { user } = useContext(UserContext);
-  return user;
+export const useSetLang = () => {
+  const { setLang } = useContext(LangContext);
+  return setLang;
 };
 
-// useFns
-export const useFns = () => {
-  const { fn } = useContext(UserContext);
-  return fn;
+export const useT = () => {
+  const { t } = useContext(LangContext);
+  return t;
 };
 
-export default UserContextProvider;
+export default Lang;
