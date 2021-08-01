@@ -1,14 +1,9 @@
 import React from "react";
-import Lang from "./Context";
-import translations from "./translation";
-import Screen from "./Screen";
 
-function App() {
+const App = () => {
   return (
-    <Lang defaultLang="en" translations={translations}>
-      <Screen /> {/*Screen이 children이 된다. */}
-    </Lang>
+    <>
+      <Screen></Screen>
+    </>
   );
-}
-
-export default App;
+};
