@@ -1,9 +1,14 @@
 import React from "react";
+import Lang from "./Context";
+import Screen from "./Screen";
+import translations from "./translation";
 
 const App = () => {
   return (
-    <>
-      <Screen></Screen>
-    </>
+    <Lang defaultLang="en" translations={translations}>
+      <Screen />
+    </Lang>
   );
 };
+
+export default App;
