@@ -21,8 +21,9 @@ const reducer = (state, action) => {
         toDos: state.toDos.filter((toDo) => toDo.id !== action.payload),
       };
     case COMPLETE:
-      const target = state.toDos.find((toDo) => toDo.id == action.payload);
       // toDo.id === action.payload를 만족하는 첫 번째 element를 찾아낸다.
+      const target = state.toDos.find((toDo) => toDo.id == action.payload);
+
       return {
         ...state,
         toDos: state.toDos.filter((toDo) => toDo.id !== action.payload),

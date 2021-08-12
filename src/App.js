@@ -39,7 +39,9 @@ const App = () => {
             <span>{toDo.text}</span>
             <span onClick={() => dispatch({ type: DEL, payload: toDo.id })}>
               ❌
-            </span>
+            </span>{" "}
+            {/*클릭을 했을 때 payload에 id가 부여된다. 그 항목을 제거하라면 filter function을 통해 
+             이 아이디와 같지않은 요소들만 반환하면 된다.*/}
             <span onClick={() => dispatch({ type: DEL, payload: toDo.id })}>
               ✅
             </span>
