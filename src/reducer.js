@@ -1,13 +1,10 @@
 import { v4 as uuid } from "uuid";
+import { ADD, COMPLETE, DEL, UNCOMPLETE } from "./actions";
 
 export const initialState = {
   toDos: [],
   completed: [],
 };
-export const ADD = "add";
-export const DEL = "del";
-export const COMPLETE = "complete";
-export const UNCOMPLETE = "uncomplete";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -30,6 +27,7 @@ const reducer = (state, action) => {
         toDos: state.toDos.filter((toDo) => toDo.id !== action.payload),
         completed: [...state.completed, { ...target }],
       };
+
     case UNCOMPLETE:
       // toDo.id === action.payload를 만족하는 첫 번째 element를 찾아낸다.
       const aTarget = state.completed.find((toDo) => toDo.id == action.payload);
