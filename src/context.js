@@ -1,4 +1,5 @@
-import React, { creatContext, useReducer, useContext } from "react";
+import React, { createContext, useReducer, useContext } from "react";
+import reducer, { initialState } from "./reducer";
 
 const ToDosContext = createContext();
 
